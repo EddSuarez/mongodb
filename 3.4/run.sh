@@ -1,7 +1,7 @@
 #!/bin/bash
 set -m
 
-mongodb_cmd="mongod --storageEngine $STORAGE_ENGINE"
+mongodb_cmd="mongod --storageEngine $STORAGE_ENGINE --dbpath /mongodb/data/db"
 cmd="$mongodb_cmd  --master"
 if [ "$AUTH" == "yes" ]; then
     cmd="$cmd --auth"

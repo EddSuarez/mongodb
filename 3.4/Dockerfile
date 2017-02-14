@@ -11,10 +11,10 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv A15703C6 && \
     echo "mongodb-org-mongos hold" | dpkg --set-selections && \
     echo "mongodb-org-tools hold" | dpkg --set-selections
 
-RUN mkdir -p /data/db /data/configdb \
-  && chown -R mongodb:mongodb /data/db /data/configdb
+RUN mkdir -p /mongodb/data/db \
+  && chown -R mongodb:mongodb /mongodb/data/db
 
-VOLUME /data/db /data/configdb
+VOLUME /mongodb/data/db
 
 ENV AUTH no
 ENV STORAGE_ENGINE wiredTiger

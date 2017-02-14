@@ -31,11 +31,11 @@ EOF
 fi
 
 echo "=> Done"
-touch /data/db/.mongodb_password_set
+touch /mongodb/data/db/.mongodb_password_set
 
 echo "Restart mongod"
-mongod --shutdown
-mongodb_cmd="mongod --storageEngine $STORAGE_ENGINE"
+mongod --dbpath /mongodb/data/db --shutdown
+mongodb_cmd="mongod --storageEngine $STORAGE_ENGINE --dbpath /mongodb/data/db"
 cmd="$mongodb_cmd --master --auth"
 
 if [ "$JOURNALING" == "no" ]; then
